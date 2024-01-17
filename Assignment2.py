@@ -23,3 +23,13 @@ def display_advice(advice_data):
         print(advice_data["slip"]["advice"])
     else:
         print("unable to fetch random advice.")
+
+def main():
+    advice_api_url = "https://api.adviceslip.com/advice"
+
+advice_data = get_random_advice(advice_api_url)
+if advice_data:
+    display_advice(advice_data)
+
+if __name__=="__main__":
+    main()
