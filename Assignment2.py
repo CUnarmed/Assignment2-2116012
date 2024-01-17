@@ -16,3 +16,10 @@ def get_random_advice(api_url):
         print(f"Timeout Error: {errt}")
     expect requests.exceptions.RequestException as err:
         print(f"An error occurred: {err}")
+
+def display_advice(advice_data):
+    if "slip" in advice_data and "advice" in advice_data["slip"]:
+        print("\nRandom Advice:")
+        print(advice_data["slip"]["advice"])
+    else:
+        print("unable to fetch random advice.")
