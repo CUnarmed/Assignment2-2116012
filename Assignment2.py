@@ -48,6 +48,7 @@ def display_dog_image(dog_data):
     if "message" in dog_data and dog_data["status"] == "success":
         print("\nRandom Dog Image:")
         print(f"URL: {dog_data['message']}")
+        webbrowser.open(dog_data["message"])
     else:
         print("Unable to fetch a random dog image.")
 
