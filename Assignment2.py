@@ -44,12 +44,25 @@ def get_random_dog_image(api_url):
         print(f"An error occurred: {err}")
 
 
+def display_dog_image(dog_data):
+    if "message" in dog_data and dog_data["status"] == "success":
+        print("\nRandom Dog Image:")
+        print(f"URL: {dog_data['message']}")
+    else:
+        print("Unable to fetch a random dog image.")
+
+
 def main():
     advice_api_url = "https://api.adviceslip.com/advice"
+    dog_api_url = "https://dog.ceo/api/breeds/image/random"
 
     advice_data = get_random_advice(advice_api_url)
     if advice_data:
         display_advice(advice_data)
+
+    dog_data = get_random_dog_image(dog_api_url)
+    if dog_data:
+        display_dog_image(dog_data)
 
 
 if __name__ == "__main__":
