@@ -27,13 +27,30 @@ def display_advice(advice_data):
         print("unable to fetch random advice.")
 
 
+def get_random_dog_image(api_url):
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+
+        dog_data = response.json()
+        return dog_data
+    except requests.exceptions.HTTPError as errh:
+        print(f"HTTP Error: {errh}")
+    except requests.exceptions.ConnectionError as errc:
+        print(f"Error Connecting: {errc}")
+    except requests.exceptions.Timeout as errt:
+        print(f"Timeout Error: {errt}")
+    except requests.exceptions.RequestException as err:
+        print(f"An error occurred: {err}")
+
+
 def main():
     advice_api_url = "https://api.adviceslip.com/advice"
-
 
     advice_data = get_random_advice(advice_api_url)
     if advice_data:
         display_advice(advice_data)
+
 
 if __name__ == "__main__":
     main()
