@@ -5,7 +5,7 @@ import webbrowser
 def get_random_advice(api_url):
     try:
         response = requests.get(api_url)
-        response.raise_for_status()  # Check for errors in the response
+        response.raise_for_status()
 
         advice_data = response.json()
         return advice_data
